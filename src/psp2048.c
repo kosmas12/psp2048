@@ -123,7 +123,7 @@ void redrawScreen (int ix,int iy) {
 	
 	for (y=0;y<TABLE_HEIGHT;++y) {
 		for (x=0;x<TABLE_WIDTH;++x) {
-			int index = 0,t,x,y;
+			int index = 0,t,rx,ry;
 			if (x==ix && y==iy)
 				continue;
 			t = table[y][x];
@@ -134,9 +134,9 @@ void redrawScreen (int ix,int iy) {
 				index ++;
 			}
 			index--,index--;
-			x = NUM_DRAW_X_POS(x); 
-			y = NUM_DRAW_Y_POS(y);
-			blit(0,0,NUM_SQR_WIDTH,NUM_SQR_HEIGHT,imgNum[index],x,y);
+			rx = NUM_DRAW_X_POS(x); 
+			ry = NUM_DRAW_Y_POS(y);
+			blit(0,0,NUM_SQR_WIDTH,NUM_SQR_HEIGHT,imgNum[index],rx,ry);
 		}
 	}
 	
