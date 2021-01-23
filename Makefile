@@ -1,6 +1,7 @@
 TARGET = 2048-PSP
 OBJS = src/psp2048.o src/callbacks.o src/graphics.o src/framebuffer.o src/input.o
 
+BUILD_PRX = 1
 PSP_LARGE_MEMORY = 1
 
 EXTRA_TARGETS = EBOOT.PBP
