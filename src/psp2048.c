@@ -15,6 +15,7 @@
 #include "graphics.h"
 #include "callbacks.h"
 #include "input.h"
+#include <string.h>
 
 #define VERS 1
 #define REVS 0

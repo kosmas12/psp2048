@@ -8,6 +8,10 @@
 #include "graphics.h"
 #include "framebuffer.h"
 
+#define png_bytep_NULL (png_bytepp)NULL
+#define int_p_NULL (int*)NULL
+#define png_infopp_NULL (png_infopp)NULL
+
 #define IS_ALPHA(color) (((color)&0xff000000)==0xff000000?0:1)
 #define FRAMEBUFFER_SIZE (PSP_LINE_SIZE*SCREEN_HEIGHT*4)
 #define MAX(X, Y) ((X) > (Y) ? (X) : (Y))
@@ -96,7 +100,7 @@ Image* loadImage(const char* filename)
 	png_set_strip_16(png_ptr);
 	png_set_packing(png_ptr);
 	if (color_type == PNG_COLOR_TYPE_PALETTE) png_set_palette_to_rgb(png_ptr);
-	if (color_type == PNG_COLOR_TYPE_GRAY && bit_depth < 8) png_set_gray_1_2_4_to_8(png_ptr);
+	if (color_type == PNG_COLOR_TYPE_GRAY && bit_depth < 8) png_set_expand_gray_1_2_4_to_8(png_ptr);
 	if (png_get_valid(png_ptr, info_ptr, PNG_INFO_tRNS)) png_set_tRNS_to_alpha(png_ptr);
 	png_set_filler(png_ptr, 0xff, PNG_FILLER_AFTER);
 	image->data = (Color*) memalign(16, image->textureWidth * image->textureHeight * sizeof(Color));
